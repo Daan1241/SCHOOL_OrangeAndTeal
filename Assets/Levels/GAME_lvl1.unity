@@ -6310,7 +6310,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 1
+  m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
@@ -24190,7 +24190,7 @@ GameObject:
   - component: {fileID: 1499543444}
   - component: {fileID: 1499543443}
   m_Layer: 0
-  m_Name: Point Light
+  m_Name: slideCube_light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24230,7 +24230,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 79577.47
+  m_Intensity: 500000
   m_EnableSpotReflector: 0
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -24267,22 +24267,22 @@ MonoBehaviour:
   m_SurfaceTexture: {fileID: 0}
   m_SurfaceTint: {r: 1, g: 1, b: 1, a: 1}
   m_Distance: 1.5e+11
-  m_UseRayTracedShadows: 0
-  m_NumRayTracingSamples: 4
+  m_UseRayTracedShadows: 1
+  m_NumRayTracingSamples: 1
   m_FilterTracedShadow: 1
-  m_FilterSizeTraced: 16
+  m_FilterSizeTraced: 10
   m_SunLightConeAngle: 0.5
   m_LightShadowRadius: 0.5
   m_SemiTransparentShadow: 0
   m_ColorShadow: 1
-  m_DistanceBasedFiltering: 0
+  m_DistanceBasedFiltering: 1
   m_EvsmExponent: 15
   m_EvsmLightLeakBias: 0
   m_EvsmVarianceBias: 0.00001
   m_EvsmBlurPasses: 0
   m_LightlayersMask: 1
   m_LinkShadowLayers: 1
-  m_ShadowNearPlane: 0.2
+  m_ShadowNearPlane: 0.0001
   m_BlockerSampleCount: 24
   m_FilterSampleCount: 16
   m_MinFilterSize: 0.1
@@ -24344,7 +24344,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0, g: 0.50980395, b: 0.7490196, a: 0}
-  m_Intensity: 79577.47
+  m_Intensity: 500000
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -27115,6 +27115,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 453367579}
     m_Modifications:
+    - target: {fileID: 836352783529847328, guid: 4a61b5049c110a94bb8060fa37e5dbc7, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 836352783529847328, guid: 4a61b5049c110a94bb8060fa37e5dbc7, type: 3}
+      propertyPath: m_RayTraceProcedural
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1724952298796408592, guid: 4a61b5049c110a94bb8060fa37e5dbc7, type: 3}
       propertyPath: m_Name
       value: wall (179)
@@ -29775,7 +29783,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1858912733}
   serializedVersion: 2
-  m_Mass: 0.1
+  m_Mass: 0.5
   m_Drag: 1
   m_AngularDrag: 0.05
   m_UseGravity: 0
@@ -29783,6 +29791,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 118
   m_CollisionDetection: 0
+--- !u!114 &1858912738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858912733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e95d2885f34fa9048b2522a8462e72cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brightness: 150
+  childlight: {fileID: 1499543444}
+  startColor: {r: 0, g: 0.42676473, b: 1, a: 0}
+  endColor: {r: 0.7490196, g: 0.15686275, b: 0, a: 0}
+  sound: {fileID: 0}
+  invert: 0
+  triggerTreshold: 2
+  triggerObject: {fileID: 0}
+  objectIndex: 0
 --- !u!1001 &1865845346
 PrefabInstance:
   m_ObjectHideFlags: 0

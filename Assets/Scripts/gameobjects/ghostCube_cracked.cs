@@ -16,7 +16,7 @@ public class ghostCube_cracked : MonoBehaviour
                     foreach (Collider hit in colliders){
                             Rigidbody rb = hit.GetComponent<Rigidbody>();
                             if (rb != null)
-                                rb.AddExplosionForce(.125f, transform.position, 1f, 3.0F);
+                                rb.AddExplosionForce(5f, transform.position, 1f, 3.0F);
                         }
                     explode = true;
                 }

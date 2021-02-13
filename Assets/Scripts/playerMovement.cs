@@ -10,6 +10,7 @@ public class playerMovement : MonoBehaviour
 	public GameObject camera;
 	public GameObject collider;
 	public AudioClip hit;
+	public float volume;
     AudioSource[] audioSources;
 	Vector3 prevPos;
 	float averageVelocity;
@@ -39,9 +40,9 @@ public class playerMovement : MonoBehaviour
 			averageVelocity = averageVelocity * -1;
 			}
 		// Debug.Log(averageVelocity);
-		audioSources[0].volume = averageVelocity;
+		audioSources[0].volume = averageVelocity*volume;
 		audioSources[0].pitch = averageVelocity*1.0001f;
-		Debug.Log(averageVelocity*1.0001f);
+		// Debug.Log(averageVelocity*1.0001f);
 		
 
 			//Debug.Log((this.transform.position.x - prevPos.x) + " en " + (this.transform.position.x - prevPos.x));
@@ -67,7 +68,7 @@ public class playerMovement : MonoBehaviour
 				audioSources[1].pitch = averageVelocity*.25f;
         		audioSources[1].Play();
 			}
-			Debug.Log(other.tag);
+			// Debug.Log(other.tag);
         }
 	 
 }

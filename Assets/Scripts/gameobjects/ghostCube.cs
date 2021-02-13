@@ -16,7 +16,7 @@ public class ghostCube : MonoBehaviour
     }
 
 	void OnCollisionEnter(Collision collision){
-		if(destroyed == false && collision.gameObject.tag == "Player"){
+		if(destroyed == false && collision.gameObject.name == player.name){
 		Destroy(this.gameObject);
 		Instantiate(cracked, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
 		destroyed = true;

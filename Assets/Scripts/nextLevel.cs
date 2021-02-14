@@ -6,17 +6,28 @@ using UnityEngine.SceneManagement;
 public class nextLevel : MonoBehaviour
 {
 	
+	// Will be entered in Unity Editor
 	public GameObject player;
 	public GameObject playerHeart;
 	public GameObject endTarget;
 	public Light light;
-	private bool scaleDown;
-	private bool changeColor;
-	public Rigidbody playerRb;
+	public float brightness;
+	public Color startColor;
+	public Color endColor;
+
+	// Temporary variables, do not give any value. Default: false.
+	bool scaleDown;
+	bool changeColor;
+
+	// Pre-made variables, do not give any value. Will be initialized at Start().
+	Rigidbody playerRb;
 	Material material;
 	Material playerHeartMaterial;
+	Color color_pressurePlate;
+	Color color_pressurePlateLight;
 	float time;
-    // Start is called before the first frame update
+
+
     void Start()
     {
         scaleDown = false;
@@ -42,12 +53,13 @@ public class nextLevel : MonoBehaviour
 		if(changeColor == true){
 			
 			time = time + Time.deltaTime;
-			 Color color_pressurePlate;
-			 color_pressurePlate = Color.Lerp(new Color(0f, 130f, 191f, 0) *5, new Color(255f, 53f, 0f, 0) *5, time);
+			 color_pressurePlate = Color.Lerp(startColor*brightness*10000, endColor*brightness*10000, time);
 			 material.SetColor("_EmissiveColor", color_pressurePlate);
-			 light.color = Color.Lerp(new Color(0f, 0.13f, 0.191f, 0), new Color(255f, 53f, 0f, 0) / 50, time);
 
-			 Color color_playerHeart = Color.Lerp(new Color(0f, 130f, 191f, 0) *5, new Color(255f, 53f, 0f, 0) *5, time);
+			color_pressurePlateLight = Color.Lerp(startColor* brightness/10000000, endColor * brightness/10000000, time);
+			 light.color = color_pressurePlateLight;
+
+			 Color color_playerHeart = Color.Lerp(startColor *brightness*10000, endColor *brightness*10000, time);
 			 playerHeartMaterial.SetColor("_EmissiveColor", color_playerHeart);
 		}
     }

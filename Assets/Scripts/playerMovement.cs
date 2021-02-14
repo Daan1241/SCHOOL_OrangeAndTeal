@@ -1,29 +1,31 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
 	
-	public Rigidbody rb;
+	// Variables that can be modified trough the Unity Editor.
 	public GameObject player;
 	public GameObject camera;
 	public GameObject collider;
 	public AudioClip hit;
 	public float volume;
+	public float speed;
+	public float jumpForce;
+
+	// Temporary variables, do not modify
     AudioSource[] audioSources;
 	Vector3 prevPos;
 	float averageVelocity;
-	
-	
+	Rigidbody rb;
 	float moveInputH, moveInputV;
-	public float speed, jumpForce;
 	
-    void Start()
-    {
-		
+	
+    void Start() {
         rb = player.GetComponent<Rigidbody>();
 		audioSources = GetComponents<AudioSource>();
+		// Start rolling ball sound, yet still unhearable because the volume will stay at 0 when the player is not moving
 		audioSources[0].Play();
     }
 
@@ -36,20 +38,14 @@ public class playerMovement : MonoBehaviour
 			// do nothing lol
 		}
 
-		if(averageVelocity <0){
+		if(averageVelocity < 0){
 			averageVelocity = averageVelocity * -1;
-			}
-		// Debug.Log(averageVelocity);
+		}
+
 		audioSources[0].volume = averageVelocity*volume;
 		audioSources[0].pitch = averageVelocity*1.0001f;
-		// Debug.Log(averageVelocity*1.0001f);
-		
-
-			//Debug.Log((this.transform.position.x - prevPos.x) + " en " + (this.transform.position.x - prevPos.x));
-		
 		
 		prevPos = this.transform.position;
-
         moveInputH = Input.GetAxisRaw("Horizontal");
 		moveInputV = Input.GetAxisRaw("Vertical");
 		

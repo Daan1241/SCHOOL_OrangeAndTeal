@@ -43,21 +43,40 @@ public class pressurePlate : MonoBehaviour
                 if(triggerObject.transform.localScale.x == 1){
                 triggerObject.transform.localScale = new Vector3(.95f, .95f, .95f);
                 }
-                if(triggerObject_startPosition.x - triggerObject.transform.position.x > -.9f){
-                triggerObject.transform.position += new Vector3(.025f*moveAxis_direction , 0, 0);
-                } else {
-                    Debug.Log("pressureplate killed");
-                    triggered = "dead";
+                if(moveAxis_direction > 0 ){ // Move Axis direction is a positive integer
+                    if(triggerObject_startPosition.x - triggerObject.transform.position.x > -.9f){
+                    triggerObject.transform.position += new Vector3(.025f*moveAxis_direction , 0, 0);
+                    } else {
+                        Debug.Log("pressureplate killed");
+                        triggered = "dead";
+                    }
+                } else if(moveAxis_direction < 0 ){ // Move Axis direction is a negative integer
+                    if(triggerObject_startPosition.x - triggerObject.transform.position.x < .9f){
+                    triggerObject.transform.position += new Vector3(.025f*moveAxis_direction , 0, 0);
+                    } else {
+                        Debug.Log("pressureplate killed");
+                        triggered = "dead";
+                    }
                 }
             } else if(moveAxis == "z" || moveAxis == "Z"){
                 if(triggerObject.transform.localScale.z == 1){
                 triggerObject.transform.localScale = new Vector3(.95f, .95f, .95f);
                 }
-                if(triggerObject_startPosition.z - triggerObject.transform.position.z > -.9f){
-                triggerObject.transform.position += new Vector3(0, 0, .025f*moveAxis_direction);
-                } else {
-                    Debug.Log("pressureplate killed");
-                    triggered = "dead";
+
+                if(moveAxis_direction > 0 ){ // Move Axis direction is a positive integer
+                    if(triggerObject_startPosition.z - triggerObject.transform.position.z > -.9f){
+                    triggerObject.transform.position += new Vector3(0, 0, .025f*moveAxis_direction);
+                    } else {
+                        Debug.Log("pressureplate killed");
+                        triggered = "dead";
+                    }
+                } else if(moveAxis_direction < 0 ){ // Move Axis direction is a negative integer
+                    if(triggerObject_startPosition.z - triggerObject.transform.position.z < .9f){
+                    triggerObject.transform.position += new Vector3(0, 0, .025f*moveAxis_direction);
+                    } else {
+                        Debug.Log("pressureplate killed");
+                        triggered = "dead";
+                    }
                 }
             }
 

@@ -1,4 +1,4 @@
 git add *
-git commit -m "Cleaned up some code, added NextLevel prefab and made some minor performance improvements."
+git commit -m "Fixed up nextLevel (prefab), added barrier (prefab) and pressurePlate (prefab). Still working on scaleDown prefab."
 git push -f origin main
 pause

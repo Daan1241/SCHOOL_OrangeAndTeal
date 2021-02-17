@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class scaleDown : MonoBehaviour
+public class scaleUp : MonoBehaviour
 {
     
     public GameObject player;
 
-    [Tooltip("Scaling down factor of the player. For example, 2 will result in playersize/2, meaning it will half the size. Same for 4, resulting in a quarter of the original size. Etc, etc.")]
-    public float scaleDownFactor;
+    [Tooltip("Scaling up factor of the player. For example, 2 will result in playersize*2, meaning it will double the size. Same for 4, resulting in 4 times the original size. Etc, etc.")]
+    public float scaleUpFactor;
 
     Vector3 startPlayerSize;
     Vector3 currentPlayerSize;
@@ -25,6 +25,7 @@ public class scaleDown : MonoBehaviour
     }
 
     void Update() {
+        
     }
 
     void OnCollisionEnter(Collision collision) {
@@ -35,8 +36,8 @@ public class scaleDown : MonoBehaviour
         if(collision.gameObject.name == player.name){
             timer += Time.deltaTime;
 
-                if(player.transform.localScale.x >= startPlayerSize.x/scaleDownFactor){
-                    player.transform.localScale = Vector3.Lerp(player.transform.localScale, player.transform.localScale / scaleDownFactor, timer/50);
+                if(player.transform.localScale.x <= startPlayerSize.x){
+                    player.transform.localScale = Vector3.Lerp(player.transform.localScale, player.transform.localScale * scaleUpFactor, timer/50);
                 }
         }
     }

@@ -13,10 +13,15 @@ public class pressurePlate : MonoBehaviour
     float x, y, z, distBetweenPlayer;
     string triggered;
     Vector3 triggerObject_startPosition;
+    Material mymat;
+
+	public Color pressedColor;
+    public float brightness;
     
 	
     void Start()
     {
+        mymat = GetComponent<Renderer>().material;
         x = transform.position.x;
         y = transform.position.y;
         z = transform.position.z;
@@ -29,9 +34,10 @@ public class pressurePlate : MonoBehaviour
     distBetweenPlayer = 0.8f-Vector3.Distance(player.transform.position, transform.position); // Update height of pressure plate, depending on if player stands on it.
 	
 	if(distBetweenPlayer >= 0){ // Player is close enaugh for valid trigger.
-		transform.position = new Vector3(x, y-distBetweenPlayer/8, z);
+		transform.position = new Vector3(x, y-distBetweenPlayer/8+.02f, z);
         if(triggered == "start"){
             Debug.Log("TRIGGER PRESSUREPLATE!!!");
+            mymat.SetColor("_EmissiveColor", pressedColor*brightness);
             triggered = "pressed";
         } else {
             // Do nothing, trigger has already been triggered
@@ -47,14 +53,13 @@ public class pressurePlate : MonoBehaviour
                     if(triggerObject_startPosition.x - triggerObject.transform.position.x > -.9f){
                     triggerObject.transform.position += new Vector3(.025f*moveAxis_direction , 0, 0);
                     } else {
-                        Debug.Log("pressureplate killed");
                         triggered = "dead";
+                        
                     }
                 } else if(moveAxis_direction < 0 ){ // Move Axis direction is a negative integer
                     if(triggerObject_startPosition.x - triggerObject.transform.position.x < .9f){
                     triggerObject.transform.position += new Vector3(.025f*moveAxis_direction , 0, 0);
                     } else {
-                        Debug.Log("pressureplate killed");
                         triggered = "dead";
                     }
                 }
@@ -67,14 +72,12 @@ public class pressurePlate : MonoBehaviour
                     if(triggerObject_startPosition.z - triggerObject.transform.position.z > -.9f){
                     triggerObject.transform.position += new Vector3(0, 0, .025f*moveAxis_direction);
                     } else {
-                        Debug.Log("pressureplate killed");
                         triggered = "dead";
                     }
                 } else if(moveAxis_direction < 0 ){ // Move Axis direction is a negative integer
                     if(triggerObject_startPosition.z - triggerObject.transform.position.z < .9f){
                     triggerObject.transform.position += new Vector3(0, 0, .025f*moveAxis_direction);
                     } else {
-                        Debug.Log("pressureplate killed");
                         triggered = "dead";
                     }
                 }

@@ -15827,7 +15827,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1858912738, guid: 2e0bd31654a61f64ba6f8b92ddc26b29, type: 3}
       propertyPath: triggerTreshold
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7272925592585971862, guid: 2e0bd31654a61f64ba6f8b92ddc26b29, type: 3}
       propertyPath: m_Size.x
@@ -15847,7 +15847,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7908779005339734079, guid: 2e0bd31654a61f64ba6f8b92ddc26b29, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.5
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 7908779005339734079, guid: 2e0bd31654a61f64ba6f8b92ddc26b29, type: 3}
       propertyPath: m_LocalPosition.y

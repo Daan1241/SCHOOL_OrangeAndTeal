@@ -112,3 +112,5 @@ MonoBehaviour:
   triggerObject: {fileID: 0}
   moveAxis: x
   moveAxis_direction: -1
+  pressedColor: {r: 0.7490196, g: 0.15686275, b: 0, a: 0}
+  brightness: 150

@@ -69,7 +69,7 @@ public class nextLevel : MonoBehaviour
 	private void OnTriggerEnter(Collider other) {
 		
 		// Uncomment below line to make the player automatically go to the next level after 2 seconds.
-		//Invoke("nextlevel", 2);
+		Invoke("nextlevel", 5);
 		scaleDown = true;
 		changeColor = true;
     }

@@ -1,4 +1,4 @@
 git add *
-git commit -m "Added more objects to level 2. Changed the visual look of the pressure plate to match the slideCube (now also starts blue, becomes orange when pressed). Also fixed the bug where the pressure plate was going under the floor when pressed."
+git commit -m "Finished level 2, level 3 almost finished as well. Made huge progress on the UI: start page pretty much finished, information page finished and I also added a player controller page that explains the controls of the game."
 git push -f origin main
 pause

@@ -14,6 +14,10 @@ public class GUI_controller : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-2);
     }
 
+    public void GUI_settings_back(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-3);
+    }
+
     public void GUI_start_info(){
          SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
@@ -22,9 +26,19 @@ public class GUI_controller : MonoBehaviour
          SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+2);
     }
 
+    public void GUI_start_settings(){
+         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+3);
+    }
+
 
     public void GUI_start_newgame(){
-         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+3);
+        PlayerPrefs.SetInt("MaxLevel", 0);
+         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+4);
+    }
+
+    public void GUI_start_continue(){
+        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+4 + PlayerPrefs.GetInt("MaxLevel"));
     }
 
 }

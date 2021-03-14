@@ -69,13 +69,17 @@ public class nextLevel : MonoBehaviour
 	private void OnTriggerEnter(Collider other) {
 		
 		// Uncomment below line to make the player automatically go to the next level after 2 seconds.
-		Invoke("nextlevel", 5);
+		Invoke("nextlevel", 2);
 		scaleDown = true;
 		changeColor = true;
     }
 	
 	private void nextlevel(){
+		if(PlayerPrefs.GetInt("MaxLevel") < SceneManager.GetActiveScene().buildIndex-3){
+		PlayerPrefs.SetInt("MaxLevel", SceneManager.GetActiveScene().buildIndex-3);
+		};
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+		
 	}
 	
 }

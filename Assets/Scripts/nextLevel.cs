@@ -78,7 +78,7 @@ public class nextLevel : MonoBehaviour
 		GameObject.Find("EventSystem").GetComponent<ranking>().sendPlayerData(points, timer);
 
 
-		// Invoke("nextlevel", 2);
+		Invoke("nextlevel", 2);
 		scaleDown = true;
 		changeColor = true;
     }

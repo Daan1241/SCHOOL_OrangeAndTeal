@@ -23,7 +23,7 @@ public class ranking : MonoBehaviour
 
     IEnumerator Upload() {
         WWWForm form = new WWWForm();
-        form.AddField("username", "banaan123");
+        form.AddField("username", PlayerPrefs.GetString("username"));
         form.AddField("points", ""+points);
         form.AddField("timer", ""+timer);
         form.AddField("level", "" + (SceneManager.GetActiveScene().buildIndex-3));

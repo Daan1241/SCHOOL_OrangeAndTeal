@@ -27,6 +27,10 @@ public class playerMovement : MonoBehaviour
 		audioSources = GetComponents<AudioSource>();
 		// Start rolling ball sound, yet still unhearable because the volume will stay at 0 when the player is not moving
 		audioSources[0].Play();
+		if(PlayerPrefs.GetString("username") == "" || PlayerPrefs.GetString("username") == null) {
+            Debug.Log("username empty, creating a random one");
+            PlayerPrefs.SetString("username", "guest_"+Random.Range(0, 100000000));
+        }
     }
 
     void FixedUpdate()

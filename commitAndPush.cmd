@@ -1,4 +1,4 @@
 git add *
-git commit -m "Because Rick said an online leaderboard was very hard to do and not worth the time... I implemented an online leaderboard. (Can be found at 'http://bluepixelanimations.nl/portfolio/?page_id=292') I don't have a life."
+git commit -m "Online leaderboard finished up, added option in settings to change username (no username = automatically set to guest user). Optimized game (+50fps) by joining all wall meshes. Wrote server side script that handles further saving and printing results on web page"
 git push -f origin main
 pause

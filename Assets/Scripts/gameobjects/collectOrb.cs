@@ -11,7 +11,8 @@ public class collectOrb : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.name == "Player") {
+        if (collision.gameObject.name == "Player"){ 
+                GameObject.Find("Canvas").GetComponent<pointsSystem>().points += 1000;
                 Destroy(gameObject);
                 Debug.Log("destroy orb!!!");
         }

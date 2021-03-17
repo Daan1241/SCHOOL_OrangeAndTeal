@@ -31,7 +31,8 @@ public class playerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-		Debug.Log("Max Level: "+PlayerPrefs.GetInt("MaxLevel"));
+		// Debug.Log("Max Level: "+PlayerPrefs.GetInt("MaxLevel"));
+		
 		averageVelocity = (rb.velocity.x + rb.velocity.z) / 2;
 		if(averageVelocity < 0){
 			averageVelocity = averageVelocity*-1f;

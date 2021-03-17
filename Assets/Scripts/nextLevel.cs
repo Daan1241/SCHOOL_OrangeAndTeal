@@ -69,7 +69,16 @@ public class nextLevel : MonoBehaviour
 	private void OnTriggerEnter(Collider other) {
 		
 		// Uncomment below line to make the player automatically go to the next level after 2 seconds.
-		Invoke("nextlevel", 2);
+		// Debug.Log(GameObject.Find("Canvas").GetComponent<pointsSystem>().points);
+
+		// Send data to pointsSystem script that handles uploading to server.
+		GameObject.Find("Canvas").GetComponent<pointsSystem>().stopTimer();
+		float points = GameObject.Find("Canvas").GetComponent<pointsSystem>().points;
+		float timer = GameObject.Find("Canvas").GetComponent<pointsSystem>().timer;
+		GameObject.Find("EventSystem").GetComponent<ranking>().sendPlayerData(points, timer);
+
+
+		// Invoke("nextlevel", 2);
 		scaleDown = true;
 		changeColor = true;
     }

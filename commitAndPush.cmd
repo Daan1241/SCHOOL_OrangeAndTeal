@@ -1,4 +1,4 @@
 git add *
-git commit -m "Saving progress functionality finally implemented yee boi!!! Level 3 finished, level 4 99.999% finished too. Added a settings page to the start screen."
+git commit -m "Because Rick said an online leaderboard was very hard to do and not worth the time... I implemented an online leaderboard. (Can be found at 'http://bluepixelanimations.nl/portfolio/?page_id=292') I don't have a life."
 git push -f origin main
 pause

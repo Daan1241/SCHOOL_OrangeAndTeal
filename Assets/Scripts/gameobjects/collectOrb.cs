@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class collectOrb : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        Debug.Log("loaded orb");
-    }
 
     void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.name == "Player"){ 
+        if (collision.gameObject.name == "Player"){
+                // Give player 1000 points for finding the orb.
                 GameObject.Find("Canvas").GetComponent<pointsSystem>().points += 1000;
+
+                // Destroy object, since it has been picked up by player
                 Destroy(gameObject);
-                Debug.Log("destroy orb!!!");
         }
         
         

@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class scaleUp : MonoBehaviour
 {
-    
+    // This values needs to be set to the player in the Unity Editor.
     public GameObject player;
 
+    // Scaling up factor of the player. For example, 2 will result in playersize*2, meaning it will double the size. Same for 4, resulting in 4 times the original size. Etc, etc.
     [Tooltip("Scaling up factor of the player. For example, 2 will result in playersize*2, meaning it will double the size. Same for 4, resulting in 4 times the original size. Etc, etc.")]
     public float scaleUpFactor;
 
+    // Temporary values handles by the computer.
     Vector3 startPlayerSize;
     Vector3 currentPlayerSize;
     float realPlayerSize;
     float timer = 0;
 
     void Start() {
-        Debug.Log("scaleDown.cs loaded.");
+        // Save original player size into a Vector3.
         startPlayerSize = new Vector3(
             player.transform.localScale.x,
             player.transform.localScale.y,
@@ -24,15 +26,8 @@ public class scaleUp : MonoBehaviour
         );
     }
 
-    void Update() {
-        
-    }
-
-    void OnCollisionEnter(Collision collision) {
-        Debug.Log("Enter");
-    }
-
     void OnCollisionStay(Collision collision) {
+        // If the object collides with player, scale player up using Lerp.
         if(collision.gameObject.name == player.name){
             timer += Time.deltaTime;
 
@@ -44,7 +39,7 @@ public class scaleUp : MonoBehaviour
     
 
     void OnCollisionExit(Collision collision) {
-        Debug.Log("Exit");
+        // Reset timer once player leaves the objects collission zone.
         timer = 0;
     }
     

@@ -15,9 +15,11 @@ public class nextLevel : MonoBehaviour
 	public Color startColor;
 	public Color endColor;
 
+
 	// Temporary variables, do not give any value. Default: false.
 	bool scaleDown;
 	bool changeColor;
+
 
 	// Pre-made variables, do not give any value. Will be initialized at Start().
 	Rigidbody playerRb;
@@ -28,8 +30,7 @@ public class nextLevel : MonoBehaviour
 	float time;
 
 
-    void Start()
-    {
+    void Start() {
         scaleDown = false;
 		changeColor = false;
 		playerRb = player.GetComponent<Rigidbody>();
@@ -38,9 +39,9 @@ public class nextLevel : MonoBehaviour
     }
 
 
-    void FixedUpdate()
-    {
-		// Start scale down sequence
+    void FixedUpdate() 
+	{
+		// Start scale down sequence when triggered.
         if(scaleDown == true){
 			if(player.transform.localScale.x > 0.001f){
 			player.transform.localScale = Vector3.Lerp (player.transform.localScale, new Vector3 (.5f, .5f, .5f), 5.0f * Time.deltaTime);
@@ -52,7 +53,7 @@ public class nextLevel : MonoBehaviour
 			playerRb.MovePosition (Vector3.Lerp (player.transform.position, endTarget.transform.position, 5.0f * Time.deltaTime));
 		}
 		
-		// Start color changing sequence
+		// Start color changing sequence.
 		if(changeColor == true){
 			time = time + Time.deltaTime;
 
@@ -66,23 +67,22 @@ public class nextLevel : MonoBehaviour
 		}
     }
 	
-	private void OnTriggerEnter(Collider other) {
-		
-		// Uncomment below line to make the player automatically go to the next level after 2 seconds.
-		// Debug.Log(GameObject.Find("Canvas").GetComponent<pointsSystem>().points);
 
+	private void OnTriggerEnter(Collider other) {
 		// Send data to pointsSystem script that handles uploading to server.
 		GameObject.Find("Canvas").GetComponent<pointsSystem>().stopTimer();
 		float points = GameObject.Find("Canvas").GetComponent<pointsSystem>().points;
 		float timer = GameObject.Find("Canvas").GetComponent<pointsSystem>().timer;
 		GameObject.Find("EventSystem").GetComponent<ranking>().sendPlayerData(points, timer);
 
-
+		// Send player to next level
 		Invoke("nextlevel", 2);
 		scaleDown = true;
 		changeColor = true;
     }
 	
+
+	// Void that handles sending player to the next level.
 	private void nextlevel(){
 		if(PlayerPrefs.GetInt("MaxLevel") < SceneManager.GetActiveScene().buildIndex-3){
 		PlayerPrefs.SetInt("MaxLevel", SceneManager.GetActiveScene().buildIndex-3);

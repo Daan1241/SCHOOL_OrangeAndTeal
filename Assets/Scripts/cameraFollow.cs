@@ -15,19 +15,16 @@ public class cameraFollow : MonoBehaviour
     Rigidbody player_rb;
     Transform target;
 
-
     // Initialize variables
     void Start(){
         target = player.transform;
         player_rb = player.GetComponent<Rigidbody>();
     }
 
-
     // Smoothly follow player.
     void FixedUpdate() {	
 		Vector3 desiredPosition = target.position + offset;
 		Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
         transform.position = smoothedPosition;
-
     }
 }
